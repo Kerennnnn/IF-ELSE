@@ -1,6 +1,7 @@
 package com.if_else.erronka.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,8 +28,12 @@ public class GailuElektronikoa {
     private LocalDate garantia_amaiera;
     private LocalDate erosketa_data;
 
-    public GailuElektronikoa(LocalDate erosketa_data, LocalDate garantia_amaiera, Gela gela, int id_gailu_elektronikoa,
-            String marka, String mota) {
+    @OneToMany(mappedBy = "gailuElektronikoa")
+    private ArrayList<Administrazioa> administrazioak;
+
+    public GailuElektronikoa(ArrayList<Administrazioa> administrazioak, LocalDate erosketa_data,
+            LocalDate garantia_amaiera, Gela gela, int id_gailu_elektronikoa, String marka, String mota) {
+        this.administrazioak = administrazioak;
         this.erosketa_data = erosketa_data;
         this.garantia_amaiera = garantia_amaiera;
         this.gela = gela;
@@ -82,6 +88,14 @@ public class GailuElektronikoa {
 
     public void setErosketa_data(LocalDate erosketa_data) {
         this.erosketa_data = erosketa_data;
+    }
+
+    public ArrayList<Administrazioa> getAdministrazioak() {
+        return administrazioak;
+    }
+
+    public void setAdministrazioak(ArrayList<Administrazioa> administrazioak) {
+        this.administrazioak = administrazioak;
     }
 
 }

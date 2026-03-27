@@ -1,11 +1,14 @@
 package com.if_else.erronka.model;
 
+import java.util.ArrayList;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,13 +24,18 @@ public class Erabiltzailea {
     private String pasahitza;
     private String erabiltzaile_izena;
     private String posta_kodea;
-    
+
     @ManyToOne
     @JoinColumn(name = "id_rola")
     private Rola rola;
 
-    public Erabiltzailea(String abizena, String erabiltzaile_izena, int id_erabiltzailea, String izena, String pasahitza, String posta_kodea, Rola rola, int telefonoa) {
+    @OneToMany(mappedBy = "erabiltzailea")
+    private ArrayList<Administrazioa> administrazioak;
+
+    public Erabiltzailea(String abizena, ArrayList<Administrazioa> administrazioak, String erabiltzaile_izena,
+            int id_erabiltzailea, String izena, String pasahitza, String posta_kodea, Rola rola, int telefonoa) {
         this.abizena = abizena;
+        this.administrazioak = administrazioak;
         this.erabiltzaile_izena = erabiltzaile_izena;
         this.id_erabiltzailea = id_erabiltzailea;
         this.izena = izena;
@@ -101,5 +109,12 @@ public class Erabiltzailea {
         this.rola = rola;
     }
 
+    public ArrayList<Administrazioa> getAdministrazioak() {
+        return administrazioak;
+    }
+
+    public void setAdministrazioak(ArrayList<Administrazioa> administrazioak) {
+        this.administrazioak = administrazioak;
+    }
 
 }
