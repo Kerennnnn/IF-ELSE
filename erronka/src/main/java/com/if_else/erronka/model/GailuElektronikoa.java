@@ -1,9 +1,11 @@
 package com.if_else.erronka.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,91 +13,36 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "gailu_elektronikoa")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class GailuElektronikoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_gailu_elektronikoa;
+    private Integer idGailuElektronikoa;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_gela")
     private Gela gela;
 
     private String mota;
     private String marka;
-    private LocalDate garantia_amaiera;
-    private LocalDate erosketa_data;
+
+    @Column(name = "garantia_amaiera")
+    private LocalDate garantiaAmaiera;
+
+    @Column(name = "erosketa_data")
+    private LocalDate erosketaData;
 
     @OneToMany(mappedBy = "gailuElektronikoa")
-    private ArrayList<Administrazioa> administrazioak;
-
-    public GailuElektronikoa(ArrayList<Administrazioa> administrazioak, LocalDate erosketa_data,
-            LocalDate garantia_amaiera, Gela gela, int id_gailu_elektronikoa, String marka, String mota) {
-        this.administrazioak = administrazioak;
-        this.erosketa_data = erosketa_data;
-        this.garantia_amaiera = garantia_amaiera;
-        this.gela = gela;
-        this.id_gailu_elektronikoa = id_gailu_elektronikoa;
-        this.marka = marka;
-        this.mota = mota;
-    }
-
-    public int getId_gailu_elektronikoa() {
-        return id_gailu_elektronikoa;
-    }
-
-    public void setId_gailu_elektronikoa(int id_gailu_elektronikoa) {
-        this.id_gailu_elektronikoa = id_gailu_elektronikoa;
-    }
-
-    public Gela getGela() {
-        return gela;
-    }
-
-    public void setGela(Gela gela) {
-        this.gela = gela;
-    }
-
-    public String getMota() {
-        return mota;
-    }
-
-    public void setMota(String mota) {
-        this.mota = mota;
-    }
-
-    public String getMarka() {
-        return marka;
-    }
-
-    public void setMarka(String marka) {
-        this.marka = marka;
-    }
-
-    public LocalDate getGarantia_amaiera() {
-        return garantia_amaiera;
-    }
-
-    public void setGarantia_amaiera(LocalDate garantia_amaiera) {
-        this.garantia_amaiera = garantia_amaiera;
-    }
-
-    public LocalDate getErosketa_data() {
-        return erosketa_data;
-    }
-
-    public void setErosketa_data(LocalDate erosketa_data) {
-        this.erosketa_data = erosketa_data;
-    }
-
-    public ArrayList<Administrazioa> getAdministrazioak() {
-        return administrazioak;
-    }
-
-    public void setAdministrazioak(ArrayList<Administrazioa> administrazioak) {
-        this.administrazioak = administrazioak;
-    }
+    private List<Administrazioa> administrazioak;
 
 }

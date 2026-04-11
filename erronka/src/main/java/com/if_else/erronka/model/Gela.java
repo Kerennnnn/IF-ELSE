@@ -1,8 +1,10 @@
 package com.if_else.erronka.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,60 +12,30 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Gela")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Gela {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_gela;
+    private Integer idGela;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_solairua")
     private Solairua solairua;
 
-    private int gela_zenbakia;
+    @Column(name = "gela_zenbakia")
+    private int gelaZenbakia;
 
     @OneToMany(mappedBy = "gela")
-    private ArrayList<GailuElektronikoa> gailuElektronikoak;
-
-    public Gela(ArrayList<GailuElektronikoa> gailuElektronikoak, int gela_zenbakia, int id_gela, Solairua solairua) {
-        this.gailuElektronikoak = gailuElektronikoak;
-        this.gela_zenbakia = gela_zenbakia;
-        this.id_gela = id_gela;
-        this.solairua = solairua;
-    }
-
-    public int getId_gela() {
-        return id_gela;
-    }
-
-    public void setId_gela(int id_gela) {
-        this.id_gela = id_gela;
-    }
-
-    public Solairua getSolairua() {
-        return solairua;
-    }
-
-    public void setSolairua(Solairua solairua) {
-        this.solairua = solairua;
-    }
-
-    public int getGela_zenbakia() {
-        return gela_zenbakia;
-    }
-
-    public void setGela_zenbakia(int gela_zenbakia) {
-        this.gela_zenbakia = gela_zenbakia;
-    }
-
-    public ArrayList<GailuElektronikoa> getGailuElektronikoak() {
-        return gailuElektronikoak;
-    }
-
-    public void setGailuElektronikoak(ArrayList<GailuElektronikoa> gailuElektronikoak) {
-        this.gailuElektronikoak = gailuElektronikoak;
-    }
+    private List<GailuElektronikoa> gailuElektronikoak;
 
 }
