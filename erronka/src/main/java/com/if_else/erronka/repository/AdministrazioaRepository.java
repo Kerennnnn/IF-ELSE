@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.if_else.erronka.model.Administrazioa;
 
 @Repository
-public interface AdministrazioaRepositoty extends JpaRepository<Administrazioa, Integer> {
+public interface AdministrazioaRepository extends JpaRepository<Administrazioa, Integer> {
 
 }
