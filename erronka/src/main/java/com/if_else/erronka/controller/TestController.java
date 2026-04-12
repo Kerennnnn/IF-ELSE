@@ -11,4 +11,9 @@ public class TestController {
         return "Welcome! You are successfully authenticated.";
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "Orri nagusia!";
+    }
+
 }
