@@ -16,4 +16,14 @@ public class TestController {
         return "Orri nagusia!";
     }
 
+    @GetMapping("/user")
+    public String user() {
+        return "USER";
+    }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "ADMIN";
+    }
+
 }
