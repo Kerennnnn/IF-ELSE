@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/home";
+    }
+
     @GetMapping("/hello")
     public String hello() {
         return "Welcome! You are successfully authenticated.";

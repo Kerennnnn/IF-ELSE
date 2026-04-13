@@ -17,11 +17,14 @@ public class SecurityConfiguration {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/home").permitAll()
+                        .requestMatchers("/", "/home").permitAll()
                         .requestMatchers("/admin").hasRole("ADMIN")
                         .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form
+                        //.loginPage("/login")
+                        .defaultSuccessUrl("/hello", true)
+                        .permitAll())
                 .logout(Customizer.withDefaults());
 
         return http.build();
