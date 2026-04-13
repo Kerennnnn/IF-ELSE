@@ -1,6 +1,5 @@
 package com.if_else.erronka.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,9 +19,7 @@ import lombok.Setter;
 public class Rola {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    @Column(name = "id_rola")
-    private int idRola;
+    private Integer idRola;
 
     private String izena;
 
