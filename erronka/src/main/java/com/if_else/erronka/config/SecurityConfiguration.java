@@ -22,7 +22,8 @@ public class SecurityConfiguration {
                         .requestMatchers("/user").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(form -> form
-                        //.loginPage("/login")
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/hello", true)
                         .permitAll())
                 .logout(Customizer.withDefaults());
