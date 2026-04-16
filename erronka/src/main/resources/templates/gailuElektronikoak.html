@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gailuen kudeaketa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Gailuen kudeaketa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gelak</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Solairuak</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">Eraikinak</a>
+                    </li>
+                </ul>
+                <div class="bg-primary text-white p-2 rounded">
+                    <i class="fa-regular fa-user me-3"></i>jonara (Admin)
+                </div>
+                <a href="/logout" class="btn btn-light ms-3"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Irten</a>
+            </div>
+
+
+        </div>
+    </nav>
+    <!-- <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-primary m-5">
+            + Gailu berria</button>
+    </div> -->
+    <div class="container mt-5">
+        <div class="row mse-5 g-3">
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <div>Gailu guztira</div>
+                            <div class="fs-3">4</div>
+                        </div>
+                        <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
+                                class="fa-solid fa-box-open"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <div>Aktiboak</div>
+                            <div class="fs-3">4</div>
+                        </div>
+                        <div class="fs-3 bg-success bg-opacity-10 text-success py-1 px-2 align-self-center"><i
+                                class="fa-solid fa-circle-check"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <div>Konponketan</div>
+                            <div class="fs-3">4</div>
+                        </div>
+                        <div class="fs-3 bg-warning bg-opacity-10 text-warning py-1 px-2 align-self-center"><i
+                                class="fa-solid fa-circle-exclamation"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <div>Maileguan</div>
+                            <div class="fs-3">4</div>
+                        </div>
+                        <div class="fs-3 py-1 px-2 align-self-center"
+                            style="background-color: rgba(111, 66, 193, 0.1); color: rgb(111, 66, 193);"><i
+                                class="fa-solid fa-clock"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 card p-3">
+        <div class="row">
+            <div class="col-10">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+
+            <div class="col-2">
+                <div class="dropdown">
+                    <button class="btn btn-bright dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Egoera guztiak
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Aktiboa</a></li>
+                        <li><a class="dropdown-item" href="#">Konpoketan</a></li>
+                        <li><a class="dropdown-item" href="#">Ez-aktiboak</a></li>
+                        <li><a class="dropdown-item" href="#">Maileguan</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row g-3">
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex gap-3">
+                            <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
+                                    class="fa-solid fa-box-open"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <div class="fs-3">"Izena"</div>
+                                <div>"Marka"</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <div class="d-flex justify-content-between">
+                                <div>Egoera:</div>
+                                <div
+                                    class="bg-success bg-opacity-10 text-success border border-success border-1 border-opacity-50 rounded-4 p-1">
+                                    Gailu guztira</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>Mota:</div>
+                                <div class="pe-1">Gailu guztira</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>Serie:</div>
+                                <div class="pe-1">Gailu guztira</div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>Kokapena:</div>
+                                <div class="pe-1">Gailu guztira</div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>Erosketa:</div>
+                                <div class="pe-1">Gailu guztira</div>
+                            </div>
+                              <div class="d-flex justify-content-between mt-2">
+                                <div>Garantia:</div>
+                                <div class="pe-1">Gailu guztira</div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <div>Deskribapena:</div>
+                                <div class="pe-1">Gailu guztira</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
