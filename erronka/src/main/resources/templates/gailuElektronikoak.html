@@ -11,6 +11,7 @@
         crossorigin="anonymous"></script>
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" th:href="@{/css/gailuElektronikoakStyle.css}">
 </head>
 
 <body class="bg-light">
@@ -126,7 +127,6 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Aktiboa</a></li>
                                 <li><a class="dropdown-item" href="#">Konpoketan</a></li>
-                                <li><a class="dropdown-item" href="#">Ez-aktiboak</a></li>
                                 <li><a class="dropdown-item" href="#">Maileguan</a></li>
                             </ul>
                         </div>
@@ -138,7 +138,7 @@
 
     <div class="container my-5">
         <div class="row justify-content-center g-4">
-            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+            <div th:each="gailua:${gailuak}" class="col-12 col-sm-10 col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex gap-3">
@@ -146,143 +146,43 @@
                                     class="fa-solid fa-box-open"></i>
                             </div>
                             <div class="d-flex flex-column">
-                                <div class="fs-3">"Izena"</div>
-                                <div>"Marka"</div>
+                                <div th:text="${gailua.izena}" class="fs-3">"Izena"</div>
+                                <div th:text="${gailua.marka}">"Marka"</div>
                             </div>
                         </div>
 
                         <div class="mt-2">
                             <div class="d-flex justify-content-between">
                                 <div>Egoera:</div>
-                                <div
-                                    class="bg-success bg-opacity-10 text-success border border-success border-1 border-opacity-50 rounded-4 p-1">
+                                <div th:text="${gailua.egoera}" th:classappend="${gailua.egoera}"
+                                    class="rounded-4 p-1">
                                     Gailu guztira</div>
                             </div>
 
                             <div class="d-flex justify-content-between mt-2">
                                 <div>Mota:</div>
-                                <div class="pe-1">Gailu guztira</div>
+                                <div th:text="${gailua.mota}" class="pe-1">Gailu guztira</div>
                             </div>
 
                             <div class="d-flex justify-content-between mt-2">
                                 <div>Serie:</div>
-                                <div class="pe-1">Gailu guztira</div>
+                                <div th:text="${gailua.serie}" class="pe-1">Gailu guztira</div>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
-                                <div>Kokapena:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Erosketa:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Garantia:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Deskribapena:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex gap-3">
-                            <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
-                                    class="fa-solid fa-box-open"></i>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <div class="fs-3">"Izena"</div>
-                                <div>"Marka"</div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2">
-                            <div class="d-flex justify-content-between">
-                                <div>Egoera:</div>
-                                <div
-                                    class="bg-success bg-opacity-10 text-success border border-success border-1 border-opacity-50 rounded-4 p-1">
-                                    Gailu guztira</div>
-                            </div>
-
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Mota:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Serie:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Kokapena:</div>
-                                <div class="pe-1">Gailu guztira</div>
+                                <div>Gela:</div>
+                                <div th:text="${gailua.gela.gelaZenbakia}" class="pe-1">Gailu guztira</div>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <div>Erosketa:</div>
-                                <div class="pe-1">Gailu guztira</div>
+                                <div th:text="${gailua.erosketaData}" class="pe-1">Gailu guztira</div>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <div>Garantia:</div>
-                                <div class="pe-1">Gailu guztira</div>
+                                <div th:text="${gailua.garantiaAmaiera}" class="pe-1">Gailu guztira</div>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <div>Deskribapena:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex gap-3">
-                            <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
-                                    class="fa-solid fa-box-open"></i>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <div class="fs-3">"Izena"</div>
-                                <div>"Marka"</div>
-                            </div>
-                        </div>
-
-                        <div class="mt-2">
-                            <div class="d-flex justify-content-between">
-                                <div>Egoera:</div>
-                                <div
-                                    class="bg-success bg-opacity-10 text-success border border-success border-1 border-opacity-50 rounded-4 p-1">
-                                    Gailu guztira</div>
-                            </div>
-
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Mota:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Serie:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Kokapena:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Erosketa:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Garantia:</div>
-                                <div class="pe-1">Gailu guztira</div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Deskribapena:</div>
-                                <div class="pe-1">Gailu guztira</div>
+                                <div th:text="${gailua.deskribapena}" class="pe-1">Gailu guztira</div>
                             </div>
                         </div>
                     </div>
@@ -291,10 +191,10 @@
         </div>
     </div>
 
-<footer class="bg-dark text-white text-center py-2">
-    <div class="container">All right reserved by If-Else&copy;</p>
-</footer>
-    
+    <footer class="bg-dark text-white text-center py-2">
+        <div class="container">All rights reserved by If-Else&copy;</p>
+    </footer>
+
 
 </body>
 

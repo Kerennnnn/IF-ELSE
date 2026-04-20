@@ -33,8 +33,12 @@ public class GailuElektronikoa {
     @JoinColumn(name = "id_gela")
     private Gela gela;
 
+    private String izena;
     private String mota;
     private String marka;
+    private String serie;
+    private String egoera;
+    private String deskribapena;
 
     @Column(name = "garantia_amaiera")
     private LocalDate garantiaAmaiera;

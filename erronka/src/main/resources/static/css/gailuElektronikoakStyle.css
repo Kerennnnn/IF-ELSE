@@ -1,0 +1,23 @@
+.Konponketan {
+    color: var(--bs-warning);
+    --bs-bg-opacity: 0.1;
+    background-color: rgba(var(--bs-warning-rgb), var(--bs-bg-opacity));
+    --bs-border-opacity: 0.5;
+    border: 1px solid rgba(var(--bs-warning-rgb), var(--bs-border-opacity));
+}
+
+.Aktiboa {
+    color: var(--bs-success);
+    --bs-bg-opacity: 0.1;
+    background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity));
+    --bs-border-opacity: 0.5;
+    border: 1px solid rgba(var(--bs-success-rgb), var(--bs-border-opacity));
+}
+
+.Maileguan {
+    color: rgb(111, 66, 193);
+    --bs-bg-opacity: 0.1;
+    background-color: rgba(111, 66, 193, var(--bs-bg-opacity));
+    --bs-border-opacity: 0.5;
+    border: 1px solid rgba(111, 66, 193, var(--bs-border-opacity));
+}
