@@ -12,12 +12,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" th:href="@{/css/gailuElektronikoakStyle.css}">
+    <script th:src="@{/js/gailuElektronikoak.js}" defer></script>
 </head>
 
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Gailuen kudeaketa</a>
+            <a class="navbar-brand" href="#">If-Else</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,7 +39,7 @@
                     </li>
                 </ul>
                 <div class="bg-primary text-white p-2 rounded">
-                    <i class="fa-regular fa-user me-3"></i>jonara (Admin)
+                    <i class="fa-regular fa-user me-3"></i><span sec:authentication="principal.username"></span>
                 </div>
                 <a href="/logout" class="btn btn-light ms-3"><i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Irten</a>
@@ -47,18 +48,21 @@
 
         </div>
     </nav>
-    <!-- <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-primary m-5">
-            + Gailu berria</button>
-    </div> -->
+
+    <div class="container mt-5" sec:authorize="hasRole('ADMIN')">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary">+ Gailu berria</button>
+        </div>
+    </div>
+
     <div class="container mt-5">
         <div class="row mse-5 g-3">
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="card">
                     <div class="card-body d-flex justify-content-between">
                         <div class="d-flex flex-column">
-                            <div>Gailu guztira</div>
-                            <div class="fs-3">4</div>
+                            <div>Gailuak guztira</div>
+                            <div class="fs-3" th:text="${gailuakGuztira}"></div>
                         </div>
                         <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
                                 class="fa-solid fa-box-open"></i>
@@ -71,7 +75,7 @@
                     <div class="card-body d-flex justify-content-between">
                         <div class="d-flex flex-column">
                             <div>Aktiboak</div>
-                            <div class="fs-3">4</div>
+                            <div class="fs-3" th:text="${aktiboak}"></div>
                         </div>
                         <div class="fs-3 bg-success bg-opacity-10 text-success py-1 px-2 align-self-center"><i
                                 class="fa-solid fa-circle-check"></i></div>
@@ -83,7 +87,7 @@
                     <div class="card-body d-flex justify-content-between">
                         <div class="d-flex flex-column">
                             <div>Konponketan</div>
-                            <div class="fs-3">4</div>
+                            <div class="fs-3" th:text="${konponketan}"></div>
                         </div>
                         <div class="fs-3 bg-warning bg-opacity-10 text-warning py-1 px-2 align-self-center"><i
                                 class="fa-solid fa-circle-exclamation"></i></div>
@@ -95,7 +99,7 @@
                     <div class="card-body d-flex justify-content-between">
                         <div class="d-flex flex-column">
                             <div>Maileguan</div>
-                            <div class="fs-3">4</div>
+                            <div class="fs-3" th:text="${maileguan}"></div>
                         </div>
                         <div class="fs-3 py-1 px-2 align-self-center"
                             style="background-color: rgba(111, 66, 193, 0.1); color: rgb(111, 66, 193);"><i
@@ -111,25 +115,30 @@
             <div class="card">
                 <div class="card-body p-3 row">
                     <div class="col-12 col-md-9 col-lg-10">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <form class="d-flex" role="search" action="/gailuak" method="get">
+                            <input class="form-control me-2" type="search" placeholder="Bilatu izenez edo markaz"
+                                aria-label="Search" name="string" />
                             <button class="btn btn-primary" type="submit"><i
                                     class="fa-solid fa-magnifying-glass"></i></button>
                         </form>
                     </div>
 
-                    <div class="col-12 col-md-3 col-lg-2">
-                        <div class="dropdown">
-                            <button class="btn btn-bright dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Egoera guztiak
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Aktiboa</a></li>
-                                <li><a class="dropdown-item" href="#">Konpoketan</a></li>
-                                <li><a class="dropdown-item" href="#">Maileguan</a></li>
-                            </ul>
-                        </div>
+                    <div class="col-12 col-md-3 col-lg-2 mt-2 mt-md-0">
+                        <form action="/gailuak" method="get" id="dropdownForm">
+                            <div class="dropdown">
+                                <button class="btn btn-bright dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false" th:text="${egoera}">
+                                    Egoera guztiak
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Egoera guztiak</a></li>
+                                    <li><a class="dropdown-item" href="#">Aktiboa</a></li>
+                                    <li><a class="dropdown-item" href="#">Konponketan</a></li>
+                                    <li><a class="dropdown-item" href="#">Maileguan</a></li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="egoera" id="aukera">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -137,25 +146,34 @@
     </div>
 
     <div class="container my-5">
-        <div class="row justify-content-center g-4">
-            <div th:each="gailua:${gailuak}" class="col-12 col-sm-10 col-md-6 col-lg-4">
-                <div class="card">
+        <div class="row align-items-stretch justify-content-center g-4">
+            <div th:each="gailua:${gailuak}" class=" d-flex col-12 col-sm-10 col-md-6 col-xl-4">
+                <div class="card h-100 w-100">
                     <div class="card-body">
-                        <div class="d-flex gap-3">
-                            <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
-                                    class="fa-solid fa-box-open"></i>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex gap-3">
+                                <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
+                                        class="fa-solid fa-box-open"></i>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <div th:text="${gailua.izena}" class="fs-3">"Izena"</div>
+                                    <div th:text="${gailua.marka}">"Marka"</div>
+                                </div>
                             </div>
-                            <div class="d-flex flex-column">
-                                <div th:text="${gailua.izena}" class="fs-3">"Izena"</div>
-                                <div th:text="${gailua.marka}">"Marka"</div>
+                            <div class="d-flex gap-2" sec:authorize="hasRole('ADMIN')">
+                                <div><a href="/logout" class="btn btn-light"><i class="fa-solid fa-pencil"></i></a>
+                                </div>
+                                <div>
+                                    <a href="/logout" class="btn btn-light text-danger bg-danger bg-opacity-10"><i
+                                            class="fa-solid fa-trash-can"></i></a>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="mt-2">
+                        <div class="d-flex flex-column justify-content-center mt-2">
                             <div class="d-flex justify-content-between">
                                 <div>Egoera:</div>
-                                <div th:text="${gailua.egoera}" th:classappend="${gailua.egoera}"
-                                    class="rounded-4 p-1">
+                                <div th:text="${gailua.egoera}" th:classappend="${gailua.egoera}" class="rounded-4 p-1">
                                     Gailu guztira</div>
                             </div>
 
@@ -180,9 +198,9 @@
                                 <div>Garantia:</div>
                                 <div th:text="${gailua.garantiaAmaiera}" class="pe-1">Gailu guztira</div>
                             </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <div>Deskribapena:</div>
-                                <div th:text="${gailua.deskribapena}" class="pe-1">Gailu guztira</div>
+                            <div class="mt-2">
+                                <hr class="border-secondary opacity-25">
+                                <p th:text="${gailua.deskribapena}" class="pe-1">Gailu guztira</p>
                             </div>
                         </div>
                     </div>
