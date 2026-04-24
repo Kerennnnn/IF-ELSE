@@ -41,4 +41,9 @@ public class GailuElektronikoakController {
 
         return "redirect:/admin/gailuak";
     }
+
+    @GetMapping("/gailuak/gehitu")
+    public String gailuakGehitu() {
+        return "gailuakGehitu";
+    }
 }
