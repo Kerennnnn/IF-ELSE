@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.if_else.erronka.model.GailuElektronikoa;
 import com.if_else.erronka.repository.GailuElektronikoaRepository;
 import com.if_else.erronka.service.GailuElektronikoakService;
 
@@ -42,8 +44,19 @@ public class GailuElektronikoakController {
         return "redirect:/admin/gailuak";
     }
 
-    @GetMapping("/gailuak/gehitu")
-    public String gailuakGehitu() {
+    @GetMapping("/admin/gailuak/gehitu")
+    public String gailuakGehitu(@RequestParam(required = false) Integer id, Model model) {
+        model.addAttribute("gailua", gailuElektronikoaKService.gailua(id));
+        model.addAttribute("gelak", gailuElektronikoaKService.gelak());
+
         return "gailuakGehitu";
     }
+
+    @PostMapping("/admin/gailuak/gehitu")
+    public String gailuaGorde(@ModelAttribute GailuElektronikoa gailuElektronikoa) {
+        gailuElektronikoaKService.gailuaGorde(gailuElektronikoa);
+
+        return "redirect:/admin/gailuak";
+    }
+
 }

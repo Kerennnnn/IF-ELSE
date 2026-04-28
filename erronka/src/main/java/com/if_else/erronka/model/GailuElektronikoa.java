@@ -3,6 +3,8 @@ package com.if_else.erronka.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,14 +38,17 @@ public class GailuElektronikoa {
     private String izena;
     private String mota;
     private String marka;
+    private String modelo;
     private String serie;
     private String egoera;
     private String deskribapena;
 
     @Column(name = "garantia_amaiera")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate garantiaAmaiera;
 
     @Column(name = "erosketa_data")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate erosketaData;
 
     @OneToMany(mappedBy = "gailuElektronikoa")

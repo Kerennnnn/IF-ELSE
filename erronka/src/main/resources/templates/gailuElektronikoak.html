@@ -54,7 +54,7 @@
 
     <div class="container mt-5" sec:authorize="hasRole('ADMIN')">
         <div class="d-flex justify-content-end">
-            <a href="/admin/gailuak/gehitu" class="btn btn-primary">+ Gailu berria</a>
+            <a th:href="@{/admin/gailuak/gehitu}" class="btn btn-primary">+ Gailu berria</a>
         </div>
     </div>
 
@@ -160,12 +160,15 @@
                                 </div>
                                 <div class="d-flex flex-column">
                                     <div th:text="${gailua.izena}" class="fs-3">"Izena"</div>
-                                    <div th:text="${gailua.marka}">"Marka"</div>
+                                    <div class="d-flex gap-2">
+                                        <div th:text="${gailua.marka}">"Marka"</div>
+                                        <div th:text="${gailua.modelo}">"Modelo"</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex gap-2" sec:authorize="hasRole('ADMIN')">
-                                <div><a href="/admin/gailuak/editatu" class="btn btn-light"><i
-                                            class="fa-solid fa-pencil"></i></a>
+                                <div><a th:href="@{/admin/gailuak/gehitu(id=${gailua.idGailuElektronikoa})}"
+                                        class="btn btn-light"><i class="fa-solid fa-pencil"></i></a>
                                 </div>
                                 <div>
                                     <button class="btn btn-light text-danger bg-danger bg-opacity-10"
