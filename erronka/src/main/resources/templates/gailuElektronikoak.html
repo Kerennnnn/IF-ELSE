@@ -17,13 +17,31 @@
 
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg bg-white">
-        <div class="container-fluid">
+        <div class="container-fluid flex-lg-nowrap">
             <a class="navbar-brand" href="#">If-Else</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+
+            <div class="d-flex ms-auto order-lg-3">
+                <div class="d-flex gap-3">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="d-flex">
+                        <div class="bg-primary text-white p-2 rounded">
+                            <i class="fa-regular fa-user me-2"></i><span sec:authentication="principal.username"></span>
+                        </div>
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn btn-light ms-3"><i
+                                    class="fa-solid fa-arrow-right-from-bracket"></i>
+                                Irten</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="collapse navbar-collapse order-lg-2 ms-lg-auto" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Gailuen kudeaketa</a>
@@ -38,15 +56,8 @@
                         <a class="nav-link" href="#">Eraikinak</a>
                     </li>
                 </ul>
-                <div class="bg-primary text-white p-2 rounded">
-                    <i class="fa-regular fa-user me-3"></i><span sec:authentication="principal.username"></span>
-                </div>
-                <form th:action="@{/logout}" method="post">
-                    <button type="submit" class="btn btn-light ms-3"><i
-                            class="fa-solid fa-arrow-right-from-bracket"></i>
-                        Irten</button>
-                </form>
             </div>
+
 
 
         </div>
@@ -151,12 +162,12 @@
     <div class="container my-5">
         <div class="row align-items-stretch justify-content-center g-4">
             <div th:each="gailua:${gailuak}" class=" d-flex col-12 col-sm-10 col-md-6 col-xl-4">
-                <div class="card h-100 w-100">
+                <div class="card h-100 w-100 mi-card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <div class="d-flex gap-3">
                                 <div class="fs-3 bg-primary bg-opacity-10 text-primary py-1 px-2 align-self-center"><i
-                                        class="fa-solid fa-box-open"></i>
+                                        class="fa-solid fa-desktop"></i>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <div th:text="${gailua.izena}" class="fs-3">"Izena"</div>
@@ -247,10 +258,10 @@
     </div>
 
     <footer class="bg-dark text-white text-center py-2">
-        <div class="container">All rights reserved by If-Else&copy;</p>
+        <div>All rights reserved by If-Else&copy;</div>
     </footer>
 
-
+    <button id="btn-gora" class="btn btn-primary"><i class="fa-solid fa-arrow-up"></i></button>
 </body>
 
 </html>
