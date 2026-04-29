@@ -3,6 +3,7 @@ package com.if_else.erronka.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.if_else.erronka.model.GailuElektronikoa;
 import com.if_else.erronka.repository.GailuElektronikoaRepository;
 import com.if_else.erronka.service.GailuElektronikoakService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class GailuElektronikoakController {
@@ -53,7 +56,14 @@ public class GailuElektronikoakController {
     }
 
     @PostMapping("/admin/gailuak/gehitu")
-    public String gailuaGorde(@ModelAttribute GailuElektronikoa gailuElektronikoa) {
+    public String gailuaGorde(@Valid @ModelAttribute("gailua") GailuElektronikoa gailuElektronikoa, BindingResult result,
+            Model model) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("gelak", gailuElektronikoaKService.gelak());
+            return "gailuakGehitu";
+        }
+
         gailuElektronikoaKService.gailuaGorde(gailuElektronikoa);
 
         return "redirect:/admin/gailuak";

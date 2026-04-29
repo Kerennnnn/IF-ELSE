@@ -67,7 +67,8 @@ public class GailuElektronikoakService {
     public void gailuaGorde(GailuElektronikoa gailuElektronikoa) {
         Integer gelaId = gailuElektronikoa.getGela().getIdGela();
 
-        Gela gela = gelaRepository.findById(gelaId).orElseThrow(() -> new RuntimeException("Gela ez da existitzen"));
+        Gela gela = gelaRepository.findById(gelaId)
+                .orElseThrow(() -> new RuntimeException("Gela ez da existitzen"));
         gailuElektronikoa.setGela(gela);
 
         gailuElektronikoaRepository.save(gailuElektronikoa);
