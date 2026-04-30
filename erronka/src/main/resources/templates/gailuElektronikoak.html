@@ -46,14 +46,26 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Gailuen kudeaketa</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Gelak</a>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link" th:href="@{/admin/gelak}">Gelak</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Solairuak</a>
+                    <li class="nav-item" sec:authorize="hasRole('USER')">
+                        <a class="nav-link" th:href="@{/app/gelak}">Gelak</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eraikinak</a>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link" th:href="@{/admin/solairuak}">Solairuak</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('USER')">
+                        <a class="nav-link" th:href="@{/app/solairuak}">Solairuak</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link" th:href="@{/admin/eraikinak}">Eraikinak</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('USER')">
+                        <a class="nav-link" th:href="@{/app/eraikinak}">Eraikinak</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link" th:href="@{/admin/erabiltzaileak}">Erabiltzaileak</a>
                     </li>
                 </ul>
             </div>
