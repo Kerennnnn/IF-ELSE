@@ -2,11 +2,14 @@ package com.if_else.erronka.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.if_else.erronka.model.Eraikina;
 import com.if_else.erronka.model.Solairua;
 import com.if_else.erronka.repository.EraikinaRepository;
 import com.if_else.erronka.repository.SolairuaRepository;
 
+@Service
 public class SolairuakService {
     private final SolairuaRepository solairuaRepository;
     private final EraikinaRepository eraikinaRepository;
@@ -16,15 +19,9 @@ public class SolairuakService {
         this.eraikinaRepository = eraikinaRepository;
     }
 
-    public List<Solairua> solairuakFiltratu(String search) {
+    public List<Solairua> solairuakFiltratu(Integer search) {
         if (search != null) {
-            if (!search.matches("\\d+")) {
-                throw new IllegalArgumentException("Zenbaki bat izan behar da");
-            }
-
-            Integer solairuZenbakia = Integer.valueOf(search);
-
-            return solairuaRepository.findBySolairuZenbakiaContaining(solairuZenbakia);
+            return solairuaRepository.findBySolairuZenbakia(search);
         } else {
             return solairuaRepository.findAll();
         }

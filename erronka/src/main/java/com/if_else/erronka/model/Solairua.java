@@ -14,7 +14,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,10 +37,10 @@ public class Solairua {
     private Eraikina eraikina;
 
     @Column(name = "solairu_zenbakia")
-    @NotBlank(message = "Mesedez, solairu zenbakia sartu")
-    @Min(0)
-    @Max(120)
-    private int solairuZenbakia;
+    @NotNull(message = "Mesedez, solairu zenbakia sartu")
+    @Min(value = 0, message = "0 baino handiagoa")
+    @Max(value = 120, message = "120 baino txikiagoa")
+    private Integer solairuZenbakia;
 
     @OneToMany(mappedBy = "solairua")
     private List<Gela> gelak;

@@ -9,5 +9,5 @@ import com.if_else.erronka.model.Solairua;
 
 @Repository
 public interface SolairuaRepository extends JpaRepository<Solairua, Integer> {
-    List<Solairua> findBySolairuZenbakiaContaining(int solairuZenbakia);
+    List<Solairua> findBySolairuZenbakia(int solairuZenbakia);
 }

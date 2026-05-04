@@ -27,7 +27,7 @@
 
                             <div class="d-flex flex-column mb-3">
                                 <label for="zenbakia" class="form-label">Solairuaren zenbakia:</label>
-                                <input type="text" th:field="*{solairuZenbakia}" class="form-control" id="zenbakia"
+                                <input type="number" th:field="*{solairuZenbakia}" class="form-control" id="zenbakia"
                                     placeholder="Adib: 101">
                                 <div class="text-danger" th:if="${#fields.hasErrors('solairuZenbakia')}"
                                     th:errors="*{solairuZenbakia}">

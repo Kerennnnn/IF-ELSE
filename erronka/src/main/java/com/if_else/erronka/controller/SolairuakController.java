@@ -24,7 +24,7 @@ public class SolairuakController {
     }
 
     @GetMapping({ "/admin/solairuak", "/app/solairuak" })
-    public String solairuak(@RequestParam(required = false) String search, Model model) {
+    public String solairuak(@RequestParam(required = false) Integer search, Model model) {
         model.addAttribute("solairuak", solairuakService.solairuakFiltratu(search));
         return "solairuak";
     }
