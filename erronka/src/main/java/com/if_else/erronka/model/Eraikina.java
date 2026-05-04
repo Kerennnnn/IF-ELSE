@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +28,12 @@ public class Eraikina {
     private Integer idEraikina;
 
     @Column(name = "eraikin_izena")
+    @NotBlank(message = "Mesedez, izena sartu")
+    @Size(max = 30, message = "Gehienez 30 karaktere")
     private String eraikinIzena;
 
+    @NotBlank(message = "Mesedez, kokapena sartu")
+    @Size(max = 30, message = "Gehienez 30 karaktere")
     private String kokapena;
 
     @OneToMany(mappedBy = "eraikina")

@@ -40,7 +40,7 @@ public class EraikinakController {
     public String gailuakGehitu(@RequestParam(required = false) Integer id, Model model) {
         model.addAttribute("eraikina", eraikinakService.eraikina(id));
 
-        return "gailuakGehitu";
+        return "eraikinakGehitu";
     }
 
     @PostMapping("/admin/eraikinak/gehitu")
