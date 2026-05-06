@@ -12,6 +12,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,9 +33,13 @@ public class Gela {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_solairua")
+    @NotNull(message = "Mesedez, solairu bat sartu")
     private Solairua solairua;
 
     @Column(name = "gela_zenbakia")
+    @NotNull(message = "Mesedez, gela zenbakia sartu")
+    @Min(value = 0, message = "0 baino handiagoa")
+    @Max(value = 120, message = "120 baino txikiagoa")
     private int gelaZenbakia;
 
     @OneToMany(mappedBy = "gela")
