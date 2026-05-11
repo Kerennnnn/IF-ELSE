@@ -14,7 +14,7 @@ import com.if_else.erronka.repository.GailuElektronikoaRepository;
 import com.if_else.erronka.service.GailuElektronikoakService;
 
 import jakarta.validation.Valid;
-
+ // Proeiktuaren aldaketak eginda
 @Controller
 public class GailuElektronikoakController {
 
